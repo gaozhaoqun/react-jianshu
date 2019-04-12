@@ -1,20 +1,8 @@
-const defaultState = {
-  focused: false
-}
+import { combineReducers } from 'redux'
+import { reducer as headerReducer }  from '../common/header/store' // 把大的reducer拆分成小的reducer, 再整合成一个 reducer, as 是起个别名
 
-
-const reducer = (state = defaultState, action) => {
-  if (action.type === 'focus') {
-    const newState = JSON.parse(JSON.stringify(state))
-    newState.focused = true
-    return newState
-  }
-  if (action.type === 'blur') {
-    const newState = JSON.parse(JSON.stringify(state))
-    newState.focused = false
-    return newState
-  }
-  return state
-}
+const reducer =  combineReducers({
+  header: headerReducer  // 数据结构多了一层, 组件中使用: state.deader.focused
+})
 
 export default reducer

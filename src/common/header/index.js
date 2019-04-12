@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { handleFocusAction, handleBlurAction } from '../../store/actionCreators'
+import { actionCreators } from './store'
+
 import { CSSTransition } from 'react-transition-group'
 import { 
   HeaderWrapper, 
@@ -13,60 +14,55 @@ import {
   SearchWrapper
 } from './style'
 
-class Header extends Component {
-  render() {
-    const { focused, handleFocus, handleBlur } = this.props
-    return (
-      <div>
-        <HeaderWrapper>
-          <Logo /> 
-          <Nav>
-            <NavItem className='left active'><i className='iconfont'>&#xe6e8;</i>&nbsp;首页</NavItem>
-            <NavItem className='left'><i className='iconfont'>&#xe60c;</i>&nbsp;下载APP</NavItem>
-            <NavItem className='right'>登录</NavItem>
-            <NavItem className='right'>
-              <i className='iconfont'>&#xe636;</i>
-            </NavItem>
-            <SearchWrapper>
-              <CSSTransition
-                timeout={200}
-                in={focused}
-                classNames='slide'
-              >
-                <NavIput 
-                  onFocus={handleFocus} 
-                  onBlur={handleBlur}
-                  className={this.props.focused ? 'focused' : ''}
-                ></NavIput>
-              </CSSTransition>
-              <i className={focused ? 'iconfont focused' : 'iconfont'}>&#xe60b;</i>
-            </SearchWrapper>
-          </Nav>
-          <Addition>
-            <Button className='reg'>注册</Button>
-            <Button className='writting'><i className="iconfont">&#xe61b;</i>写文章</Button>
-          </Addition>
-        </HeaderWrapper>
-      </div>
-    )
-  }
+const Header = props => {
+  const { focused, handleFocus, handleBlur } = props
+  return ( 
+    <HeaderWrapper>
+      <Logo />
+      <Nav>
+        <NavItem className='left active'><i className='iconfont'>&#xe6e8;</i>&nbsp;首页</NavItem>
+        <NavItem className='left'><i className='iconfont'>&#xe60c;</i>&nbsp;下载APP</NavItem>
+        <NavItem className='right'>登录</NavItem>
+        <NavItem className='right'>
+          <i className='iconfont'>&#xe636;</i>
+        </NavItem>
+        <SearchWrapper>
+          <CSSTransition
+            timeout={200}
+            in={focused}
+            classNames='slide'
+          >
+            <NavIput 
+              onFocus={handleFocus} 
+              onBlur={handleBlur}
+              className={focused ? 'focused' : ''}
+            ></NavIput>
+          </CSSTransition>
+          <i className={focused ? 'iconfont focused' : 'iconfont'}>&#xe60b;</i>
+        </SearchWrapper>
+      </Nav>
+      <Addition>
+        <Button className='reg'>注册</Button>
+        <Button className='writting'><i className="iconfont">&#xe61b;</i>写文章</Button>
+      </Addition>
+    </HeaderWrapper>
+  )
 }
 
-const mapStateToProps = (state) => {
+
+const mapStateToProps = state => {
   return {
-    focused: state.focused
+    focused: state.header.focused  // 数据结构多了一层
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     handleFocus() {
-      const action = handleFocusAction()
-      dispatch(action)
+      dispatch(actionCreators.handleFocusAction())
     },
     handleBlur() {
-      const action = handleBlurAction()
-      dispatch(action)
+      dispatch(actionCreators.handleBlurAction())
     }
   }
 }
