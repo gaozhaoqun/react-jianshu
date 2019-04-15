@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
 import { reducer as headerReducer }  from '../common/header/store' // 把大的reducer拆分成小的reducer, 再整合成一个 reducer, as 是起个别名
 
 const reducer =  combineReducers({

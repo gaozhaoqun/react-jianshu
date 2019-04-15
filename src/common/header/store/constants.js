@@ -1,2 +1,6 @@
 export const SEARCH_FOUCES = 'header/SEARCH_FOUCES'
-export const SEARCH_BLER = 'header/SEARCH_BLUR'
+export const SEARCH_BLUR = 'header/SEARCH_BLUR'
+export const GET_LIST = 'header/GET_LIST'
+export const MOUSE_ENTER = 'header/MOUSE_ENTER'
+export const MOUSE_LEAVE = 'header/MOUSE_LEAVE'
+export const CHANGE_PAGE = 'header/CHANGE_PAGE'
