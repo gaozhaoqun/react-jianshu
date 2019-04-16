@@ -107,9 +107,9 @@ export const Button = styled.div`
 export const SearchWrapper = styled.div`
   position: relative;
   float: left;
-  .iconfont {
+  .zoom {
     position: absolute;
-    top: 14px;
+    top: 12px;
     right: 10px;
     width: 30px;
     height: 30px;
@@ -140,12 +140,18 @@ export const SearchInfo = styled.div`
   top: 57px;
   left: -40px;
   width: 340px;
-  // height: 200px;
   text-align: center;
   padding: 20px 10px;
   box-sizing: border-box;
   border: 1px solid #f0f0f0;
   box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+  .change{ 
+    display: inline-block;
+    margin-right: 2px;
+    transform: rotate(90deg);
+    transition: all .2s ease-in;
+    transform-origin: center center;
+  }
 `
 
 export const SearchTop = styled.div`

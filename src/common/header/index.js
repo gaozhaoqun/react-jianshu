@@ -27,7 +27,7 @@ class Header extends Component {
     const { focused, list, page, totalPage, handleMouseIn, handleMouseOut, mouseIn, handleChangePage } = this.props
 
     const pageList = []
-    const jsList = list.toJS() // immutable 类型数组转为普通js数组
+    const jsList = list //.toJS() // immutable 类型数组转为普通js数组
     // reducer 里初始值: page: 1
     if (jsList.length) {
       for (let i = (page - 1) * 10; i < page * 10; ++ i) { // 如果是第一页 i 就是0 到 9, 如果是page=2 第二页, i就是 10 到 19
@@ -43,7 +43,16 @@ class Header extends Component {
         <SearchInfo onMouseEnter={handleMouseIn} onMouseLeave={handleMouseOut}>
           <SearchTop>
             <p>热门搜索</p>
-            <span onClick={() => handleChangePage(page, totalPage)}>换一批</span>
+            <span 
+              onClick={() => handleChangePage(page, totalPage, this.spin)}
+              >
+              <i 
+                className="iconfont change"
+                ref={(icon) => this.spin = icon}  // 通过ref获取 旋转图标的dom, 然后传给 handleChangePage方法
+                >&#xe606;
+              </i>
+              换一批
+            </span>
           </SearchTop>
           <SearchBox>
             { pageList }
@@ -56,7 +65,7 @@ class Header extends Component {
   }
 
   render() {
-    const { focused, handleFocus, handleBlur } = this.props
+    const { focused, handleFocus, handleBlur , list } = this.props
     return ( 
       <HeaderWrapper>
         <Logo />
@@ -74,12 +83,12 @@ class Header extends Component {
               classNames='slide'
             >
               <NavIput 
-                onFocus={handleFocus} 
+                onFocus={() => handleFocus(list)}
                 onBlur={handleBlur}
                 className={focused ? 'focused' : ''}
               ></NavIput>
             </CSSTransition>
-            <i className={focused ? 'iconfont focused' : 'iconfont'}>&#xe60b;</i>
+            <i className={focused ? 'iconfont focused zoom' : 'iconfont zoom'}>&#xe60b;</i>
             {this.showSearchInfo()}
           </SearchWrapper>
         </Nav>
@@ -105,9 +114,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleFocus() {
+    handleFocus(list) {
       dispatch(actionCreators.handleFocusAction())
-      dispatch(actionCreators.getList())
+      // 标签上 onFocus={() => handleFocus(list)} 把list传到handleFocused, 判断list.size 优化请求次数
+      list.size === 0 && dispatch(actionCreators.getList())
     },
     handleBlur() {
       dispatch(actionCreators.handleBlurAction())
@@ -118,7 +128,14 @@ const mapDispatchToProps = dispatch => {
     handleMouseOut() {
       dispatch(actionCreators.mouseOut())
     },
-    handleChangePage(page, totalPage) {
+    handleChangePage(page, totalPage, spin) {
+      let originAngel = spin.style.transform.replace(/[^0-9]/ig, '') // 这里是要获取DOM上的rotate的值, 不能写死为0!
+      if(!originAngel) {
+        originAngel = 0
+      } else {
+        originAngel = parseInt(originAngel) // 必须转为number类型
+      }
+      spin.style.transform = 'rotate(' + (originAngel + 360) + 'deg)'
       if (page < totalPage) {
         dispatch(actionCreators.changePage(page + 1))
       } else {

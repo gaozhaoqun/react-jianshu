@@ -16,14 +16,23 @@ const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case constants.SEARCH_FOUCES: 
       return state.set('focused', true)
+
     case constants.SEARCH_BLUR:
       return state.set('focused', false)
+
     case constants.GET_LIST:
-      return state.set('data', action.data).set('totalPage', action.totalPage)
+      return state.merge({  // merge性能会更高, 因为只调用一次
+        data: action.data,
+        totalPage: action.totalPage
+      })
+      // return state.set('data', action.data).set('totalPage', action.totalPage)
+
     case constants.MOUSE_ENTER: 
       return state.set('mouseIn', true)
+
     case constants.MOUSE_LEAVE:
       return state.set('mouseIn', false)
+
     case constants.CHANGE_PAGE:
       return state.set('page', action.page)
     default: 
