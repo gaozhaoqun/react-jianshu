@@ -128,14 +128,14 @@ const mapDispatchToProps = dispatch => {
     handleMouseOut() {
       dispatch(actionCreators.mouseOut())
     },
-    handleChangePage(page, totalPage, spin) {
-      let originAngel = spin.style.transform.replace(/[^0-9]/ig, '') // 这里是要获取DOM上的rotate的值, 不能写死为0!
+    handleChangePage(page, totalPage, rotateDiv) {  // rotateDiv 是ref获取到的DOM
+      let originAngel = rotateDiv.style.transform.replace(/[^0-9]/ig, '') // 这里是要获取DOM上的rotate的值, 不能写死为0!
       if(!originAngel) {
         originAngel = 0
       } else {
         originAngel = parseInt(originAngel) // 必须转为number类型
       }
-      spin.style.transform = 'rotate(' + (originAngel + 360) + 'deg)'
+      rotateDiv.style.transform = 'rotate(' + (originAngel + 360) + 'deg)'
       if (page < totalPage) {
         dispatch(actionCreators.changePage(page + 1))
       } else {

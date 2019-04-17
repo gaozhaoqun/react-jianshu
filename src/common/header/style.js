@@ -145,6 +145,7 @@ export const SearchInfo = styled.div`
   box-sizing: border-box;
   border: 1px solid #f0f0f0;
   box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+  background: #fff;
   .change{ 
     display: inline-block;
     margin-right: 2px;
