@@ -20,7 +20,7 @@ class List extends Component {
                   <span><i className="iconfont">&#xe741;</i>{item.heart}</span>
                 </div>
               </ListInfo>
-              <img src={item.imgUrl} />
+              <img src={item.imgUrl} alt=''/>
             </ListWrapper>
           ))
         }
@@ -31,7 +31,7 @@ class List extends Component {
     this.props.getList()
   }
 }
-
+ 
 const mapState = state => ({
   contentList: state.getIn(['home', 'contentList'])
 })

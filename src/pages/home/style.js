@@ -17,7 +17,7 @@ export const HomeLeft = styled.div`
 `
 export const HomeRight = styled.div`
   float: right;
-  width: 240px;
+  width: 280px;
 `
 // 首页 小热门专题 START
 export const ToppicWrapper = styled.div`
@@ -47,7 +47,7 @@ export const TopicItem = styled.div`
 `
 // 首页 小热门专题 END
 
-// 首页列表 START
+// 首页 左侧列表START
 export const ListWrapper = styled.div`
   overflow: hidden;
   padding: 10px 0 25px;
@@ -72,7 +72,7 @@ export const ListInfo = styled.div`
     font-size: 14px;
     line-height: 24px;
     color: #666;
-    height: 52px;
+    height: 50px;
     text-overflow: -o-ellipsis-lastline;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -95,4 +95,119 @@ export const ListInfo = styled.div`
     margin-right: 4px;
   }
 `
-// 首页
+// 首页 左侧列表 END
+
+// 右侧顶部 热门推荐 START
+export const RecommendWrapper = styled.ul`
+  height: 250px;
+  margin-top: 30px;
+  overflow: hidden;
+  li {
+    background: #f0f0f0;
+    margin-bottom: 10px;
+    i {
+      height: 40px;
+      line-height: 40px;
+      display: block;
+      background-size: 100% 100%;
+    }
+  }
+`
+
+// 右侧 推荐作家
+export const WritterWrapper = styled.div`
+  overflow: hidden;
+  padding: 10px 0;
+`
+
+export const TopDesc = styled.div`
+  height: 40px;
+  line-height: 40px;
+  color: #999;
+  p {
+    display: block;
+    float: left;
+  }
+  span {
+    display: block;
+    float: right;
+    cursor: pointer;
+    user-select: none;
+  }
+  .change {
+    display: inline-block;
+    margin-right: 2px;
+    transition: all .2s ease-in;
+    transform-origin: center center;
+  }
+`
+
+export const WritterItem = styled.div`
+  height: 50px;
+  clear: both;
+  margin-bottom: 10px;
+  .item-left { 
+    float: left;
+    .imgBox {
+      float: left;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 10px;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    .desc {
+      float: left;
+      height: 50px;
+      font-size: 12px;
+      padding: 6px 0;
+      box-sizing: border-box;
+      color: #999;
+      .author {
+        color: #333;
+        margin-bottom: 6px;
+      }
+    }
+  }
+  .item-right {
+    float: right;
+    line-height: 24px;
+    color: #383;
+  }
+`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

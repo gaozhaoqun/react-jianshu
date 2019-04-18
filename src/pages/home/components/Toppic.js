@@ -17,6 +17,7 @@ class Toppic extends Component {
                 <img 
                   className="toppic-pic" 
                   src={item.imgUrl}
+                  alt=''
                 />
                 <span>{item.title}</span>
               </TopicItem>
