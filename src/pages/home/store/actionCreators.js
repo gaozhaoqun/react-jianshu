@@ -3,7 +3,13 @@ import axios from 'axios'
 
 const handleGetList = data => ({
   type: constants.GET_LIST,
-  list: data
+  list: data,
+  totalPage: Math.ceil(data.topList.length / 3)
+})
+
+export const changePage = (page) => ({
+  type: constants.CHANGE_PAGE,
+  page
 })
 
 export const getListAction = () => {
