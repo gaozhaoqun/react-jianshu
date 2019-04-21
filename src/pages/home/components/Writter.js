@@ -41,9 +41,7 @@ class Writter extends Component {
               换一批
             </span>
           </TopDesc>
-
           {pageList}
-          
         </WritterWrapper>
       </div>
     )

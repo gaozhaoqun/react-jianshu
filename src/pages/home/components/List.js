@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import { ListWrapper, ListInfo } from '../style'
 import { connect } from 'react-redux'
+import { ListWrapper, ListInfo, LoadMore } from '../style'
 import { actionCreators } from '../store'
 
 class List extends Component {
   render() {
-    const { contentList } = this.props
+    const { contentList, handleLoadMore, contentPage } = this.props
     return (
       <div>
         {
-          contentList.map( item => (
-            <ListWrapper key={item.id}>
+          contentList.map((item, index) => (
+            <ListWrapper key={index}>
               <ListInfo>
                 <h1>{item.title}</h1>
                 <p className="content">{item.brief}</p>
@@ -24,21 +24,20 @@ class List extends Component {
             </ListWrapper>
           ))
         }
+        <LoadMore onClick={() => handleLoadMore(contentPage)}>Load More</LoadMore>
       </div>
     )
   }
-  componentDidMount() {
-    this.props.getList()
-  }
 }
- 
+
 const mapState = state => ({
-  contentList: state.getIn(['home', 'contentList'])
+  contentList: state.getIn(['home', 'contentList']),
+  contentPage: state.getIn(['home', 'contentPage'])
 })
 
 const mapDispatch = dispatch => ({
-  getList() {
-    dispatch(actionCreators.getListAction())
+  handleLoadMore(page) {
+    dispatch(actionCreators.getMoreList(page))
   }
 })
 

@@ -50,7 +50,7 @@ export const TopicItem = styled.div`
 // 首页 左侧列表START
 export const ListWrapper = styled.div`
   overflow: hidden;
-  padding: 10px 0 25px;
+  padding: 15px 0 20px;
   border-top: 1px solid #f0f0f0;
   img {
     display: block;
@@ -95,11 +95,25 @@ export const ListInfo = styled.div`
     margin-right: 4px;
   }
 `
+export const LoadMore = styled.div`
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #282a34;
+  color: #f0f0f0;
+  border-radius: 40px;
+  cursor: pointer;
+  user-select: none;
+  margin: 40px auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .6);
+`
+
 // 首页 左侧列表 END
 
 // 右侧顶部 热门推荐 START
 export const RecommendWrapper = styled.ul`
-  height: 250px;
+  min-height: 250px;
   margin-top: 30px;
   overflow: hidden;
   li {
@@ -112,6 +126,14 @@ export const RecommendWrapper = styled.ul`
       background-size: 100% 100%;
     }
   }
+`
+
+export const IecommendItem = styled.div`
+  width: 100%;
+  height: 40px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background: url(${props => props.imgUrl })
 `
 
 // 右侧 推荐作家
@@ -146,7 +168,7 @@ export const WritterItem = styled.div`
   height: 50px;
   clear: both;
   margin-bottom: 10px;
-  .item-left { 
+  .item-left {
     float: left;
     .imgBox {
       float: left;
@@ -179,35 +201,26 @@ export const WritterItem = styled.div`
     color: #383;
   }
 `
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// 返回顶部
+export const BackTop = styled.div`
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  color: #282a34;
+  background: #fff;
+  font-size: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: all .2s linear;
+  &:hover {
+    background: #282a34;
+    color: #fff;
+    transition: all .2s linear;
+  }
+`

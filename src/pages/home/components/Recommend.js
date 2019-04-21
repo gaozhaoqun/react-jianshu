@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { RecommendWrapper } from '../style'
+import { RecommendWrapper, IecommendItem } from '../style'
 import { connect } from 'react-redux'
 
 class Recommend extends Component {
@@ -12,6 +12,7 @@ class Recommend extends Component {
                 <li key={item.id}><i style={{backgroundImage:"url(" + item.imgUrl + ")"}}>&emsp;</i></li>
             ))
           }
+          <IecommendItem imgUrl="//upload-images.jianshu.io/upload_images/5412749-7dca779718cd3d09.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"></IecommendItem>
         </RecommendWrapper>
       </div>
     )
