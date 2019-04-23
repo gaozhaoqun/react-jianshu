@@ -5,8 +5,7 @@ export const HomeWrapper = styled.div`
   width: 960px;
   margin: 0 auto;
   overflow: hidden;
-
-`
+s`
 export const HomeLeft = styled.div`
   float: left
   width: 625px;
@@ -67,6 +66,7 @@ export const ListInfo = styled.div`
     font-size: 22px;
     line-height: 48px;
     font-weight: 700;
+    color: #333;
   }
   .content {
     font-size: 14px;

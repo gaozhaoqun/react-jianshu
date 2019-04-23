@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actionCreators } from './store'
-
+import { actionCreators as loginAactionCreators } from '../../pages/login/store' 
+import { Link } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
 import { 
   HeaderWrapper, 
@@ -65,14 +66,23 @@ class Header extends Component {
   }
 
   render() {
-    const { focused, handleFocus, handleBlur , list } = this.props
+    const { focused, handleFocus, handleBlur, list, login, logout } = this.props
     return ( 
       <HeaderWrapper>
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
         <Nav>
-          <NavItem className='left active'><i className='iconfont'>&#xe6e8;</i>&nbsp;首页</NavItem>
+          <Link to="/">
+            <NavItem className='left active'><i className='iconfont'>&#xe6e8;</i>&nbsp;首页</NavItem>
+          </Link>
           <NavItem className='left'><i className='iconfont'>&#xe60c;</i>&nbsp;下载APP</NavItem>
-          <NavItem className='right'>登录</NavItem>
+          {
+            login ? 
+              <NavItem onClick={logout} className='right'>退出</NavItem> : 
+              <Link to='/Login'><NavItem className='right'>登录</NavItem></Link>
+          }
+          
           <NavItem className='right'>
             <i className='iconfont'>&#xe636;</i>
           </NavItem>
@@ -94,7 +104,9 @@ class Header extends Component {
         </Nav>
         <Addition>
           <Button className='reg'>注册</Button>
-          <Button className='writting'><i className="iconfont">&#xe61b;</i>写文章</Button>
+          <Link to='/write'>
+            <Button className='writting'><i className="iconfont">&#xe61b;</i>写文章</Button>
+          </Link>
         </Addition>
       </HeaderWrapper>
     )
@@ -108,7 +120,8 @@ const mapStateToProps = state => {
     mouseIn: state.getIn(['header', 'mouseIn']),
     list: state.getIn(['header', 'data']),
     page: state.getIn(['header', 'page']),
-    totalPage: state.getIn(['header', 'totalPage'])
+    totalPage: state.getIn(['header', 'totalPage']),
+    login: state.getIn(['login', 'login'])
   }
 }
 
@@ -141,6 +154,9 @@ const mapDispatchToProps = dispatch => {
       } else {
         dispatch(actionCreators.changePage(1))
       }
+    },
+    logout() {
+      dispatch(loginAactionCreators.logout())
     }
   }
 }

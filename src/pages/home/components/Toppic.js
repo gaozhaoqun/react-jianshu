@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { 
   ToppicWrapper,
   TopicItem,
 } from '../style.js'
 
-class Toppic extends Component {
+class Toppic extends PureComponent {
   render() {
     const { list } = this.props
     return (

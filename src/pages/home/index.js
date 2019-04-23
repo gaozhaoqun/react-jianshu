@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'  // PureComponent 需配合 immutable 来使用
 import { connect } from 'react-redux'
 import Toppic from './components/Toppic'
 import List from './components/List'
@@ -7,7 +7,7 @@ import Recommend from './components/Recommend'
 import { actionCreators } from './store'
 import { HomeWrapper, HomeLeft, HomeRight, BackTop } from './style'
 
-class Home extends Component {
+class Home extends PureComponent {
   render() {
     const { handleToTop, showToTop } = this.props
     return (
