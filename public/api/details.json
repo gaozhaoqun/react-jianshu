@@ -1,0 +1,7 @@
+{
+  "success": true,
+  "data": {
+    "title": "前端性能测试",
+    "content": "<img src='//upload-images.jianshu.io/upload_images/15631385-20b1f447c92f4afd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp' alt=''/><p>前端单元测试是一项很重要对项目组成部分，特别是对于JavaScript这样弱类型语言。顾名思义，就是对软件对某块单元进行测试，只有很好地完成单元测试，才能更好地进一步完成集成测试、功能测试等等。</p><p>问他几句项目的过程、自己在项目中承担的角色、做出的贡献，他就说：</p><p>“因为我进公司不久，还在学习的阶段，所以没有特别突出的成绩。但是加入贵公司肯定会更多的学习，出更好的成绩……”</p>"
+  }
+}
